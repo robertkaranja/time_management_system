@@ -21,9 +21,13 @@ Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 Route::get('work', 'WorksController@index');
 
-Route::post('work/create', 'WorksController@create');
+Route::post('work_create',
+    [
+        'as' => 'store.work',
+        'uses' => 'WorksController@store'
+    ]);
 
-
+Route::get('create', 'WorksController@create');
 Route::get('work/{id}', 'WorksController@show');
 
 Route::post('work', 'WorksController@store');
