@@ -6,6 +6,7 @@ use App\Work;
 use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 
+
 class WorksController extends Controller
 {
 
@@ -39,20 +40,22 @@ class WorksController extends Controller
     }
 
 
-    public function edit(Work $work)
+    public function edit($id)
     {
-        //
+        $work = Work::find($id);
+        return view('works.edit')->with('work', $work);
     }
 
 
-    public function update(Request $request, Work $work)
+    public function update($id)
     {
-        $work->update($request->all());
+        Work::findOrFail($id)->update(request()->all());
+
         return redirect()->to('/api/work');
     }
 
 
-    public function destroy($id)
+    public function deleteTask($id)
     {
         Work::findOrFail($id)->delete();
 

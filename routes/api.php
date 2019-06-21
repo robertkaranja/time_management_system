@@ -21,16 +21,47 @@ Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 Route::get('work', 'WorksController@index');
 
+//Add the work details
+Route::get('create', 'WorksController@create');
+
 Route::post('work_create',
     [
         'as' => 'store.work',
         'uses' => 'WorksController@store'
     ]);
 
-Route::get('create', 'WorksController@create');
+//Edit details routes
+
+Route::get('work/{id}/edit',
+  [
+        'as' => 'edit',
+        'uses' => 'WorksController@edit'
+  ]);
+
+
+Route::put('work/{work}', [
+        
+        'as' => 'work.update',
+        'uses' => 'WorksController@update'
+  ]);
+
+
+  //Delete records
+
+  
+
+//Route::get('work/{work}/edit', 'WorksController@edit');
+
 Route::get('work/{id}', 'WorksController@show');
 
-Route::post('work', 'WorksController@store');
-Route::put('work/{work}', 'WorksController@update');
-Route::delete('work/{work}', 'WorksController@destroy');
-//Route::apiResource('/works','WorksController');
+//Route::post('work', 'WorksController@store');
+
+//Route::delete('work/{id}/delete', 'WorksController@destroy');
+//Route::apiResource('work','WorksController');
+
+
+ Route::get('work-delete/{id}',
+     [
+         'as' => 'work_delete',
+         'uses' => 'WorksController@deleteTask'
+     ]);

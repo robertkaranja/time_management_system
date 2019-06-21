@@ -14,7 +14,38 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-    
+    /**********sidebar css*******/
+
+.sidenav{
+  height: 100%;
+  width: 18%;
+  background-color: gray;
+  position:absolute;
+  margin-left:-180px;
+  margin-top: -40px;
+  
+}
+.sidenav li{
+  list-style-type: none;
+  padding:20px;
+}
+.sidenav a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+#hidebtn{
+  float:right;
+}
+#showbtn{
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+  float:left
+}
+
+
+
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
@@ -152,8 +183,11 @@ iframe {
 [ Table ]*/
 
 .limiter {
-  width: 1366px;
+  width: 1000px;
   margin: 0 auto;
+  margin-left: 200px;
+  margin-top:0px;
+  display:flex;
 }
 
 .container-table100 {
@@ -541,6 +575,12 @@ th, td {
   background-color: #cccccc;
 }
 
+
+
+
+/*=============================================================================================*/
+
+
     </style>
 </head>
 <body>
@@ -573,9 +613,16 @@ th, td {
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <!--<li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>-->
                         @else
+                        <li>
+                            <a href="/products"><strong> Records</strong></a>
+                        </li>
+                        <li>
+                            <a href="/api/work"><strong>Users</strong></a>
+                        </li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -601,7 +648,13 @@ th, td {
             </div>
         </nav>
 
-        @yield('content')
+  
+<div class="container">
+<div class="row">
+@yield('content') 
+</div>
+</div>
+       
     </div>
 
     <!-- Scripts -->
