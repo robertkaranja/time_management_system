@@ -9,7 +9,7 @@
 <nav class="sidenav" id="navbar">
 		<a href="#" id="hidebtn">&#9776</a>
 		<ul>
-			
+
 			<li><a href="/api/create">Add Record</a><li>
 			<li><a href="#">Users</a><li>
 			<li><a href="/api/work" onclick="show()" >Records</a><li>
