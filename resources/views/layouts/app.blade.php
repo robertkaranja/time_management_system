@@ -21,7 +21,7 @@
   width: 18%;
   background-color: gray;
   position:absolute;
-  margin-left:-180px;
+  margin-left: 0px;
   margin-top: -40px;
   
 }
