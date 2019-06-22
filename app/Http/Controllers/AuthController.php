@@ -42,4 +42,24 @@ class AuthController extends Controller
             return response(['user'=> auth()->user(), 'access_token' => $accessToken]);
 
     }
+
+    public function showUsers(){
+        return response()->json(User::get());
+    }
+    public function UserId($id){
+        $user = User::find($id);
+        if(is_null($user)){
+            return response()->json(['message'=>'Record Not Found']);
+        }
+        return response()->json($user);
+    }
+    public function delete(Request $request, $id){
+
+        $user = User::find($id);
+        if(is_null($user)){
+            return response()->json(['message'=>'Record Not Found']);
+        }
+        $user->delete();
+        return response()->json('Deleted');
+    }
 }

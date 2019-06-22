@@ -48,20 +48,24 @@ Route::put('work/{work}', [
 
   //Delete records
 
-  
+  Route::get('work-delete/{id}',
+     [
+         'as' => 'work_delete',
+         'uses' => 'WorksController@deleteTask'
+     ]);
 
+
+ Route::get('work/{id}', 'WorksController@show');
 //Route::get('work/{work}/edit', 'WorksController@edit');
 
-Route::get('work/{id}', 'WorksController@show');
+
 
 //Route::post('work', 'WorksController@store');
 
 //Route::delete('work/{id}/delete', 'WorksController@destroy');
 //Route::apiResource('work','WorksController');
 
-
- Route::get('work-delete/{id}',
-     [
-         'as' => 'work_delete',
-         'uses' => 'WorksController@deleteTask'
-     ]);
+Route::get('user', 'AuthController@showUsers');
+Route::get('user/{id}', 'AuthController@UserId');
+Route::delete('user/{id}', 'AuthController@delete');
+ 
